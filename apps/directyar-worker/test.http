@@ -1,0 +1,42 @@
+### ثبت اطلاعات مستر کراتین با شماره کارت و آیدی ادمین
+POST https://directyar-worker.nikzamir.workers.dev/seed
+Authorization: Bearer my-super-secret-key-12345
+Content-Type: application/json
+
+{
+  "userId": "default_user",
+  "business_name": "مستر کراتین",
+  "admin_id": "@MrKeratineAdmin",
+  "admin_chat_id": 8259341996,
+  "tone": "صمیمی و آمیانه",
+  "platform": "telegram",
+  "payment_info": {
+    "card_number": "6037-9971-1234-5678",
+    "card_holder": "محمد نیکزاد",
+    "sheba": "IR123456789012345678901234"
+  },
+  "products": [
+    {
+      "name": "شامپو ضد ریزش مو",
+      "price": 280000,
+      "stock": "موجود",
+      "details": "حاوی کافئین و بیوتین، تقویت‌کننده ریشه مو",
+      "category": "مراقبت از مو"
+    },
+    {
+      "name": "ماسک موی کراتینه",
+      "price": 350000,
+      "stock": "موجود",
+      "details": "ترمیم‌کننده موهای آسیب‌دیده، حاوی کراتین هیدرولیز شده",
+      "category": "مراقبت از مو"
+    },
+    {
+      "name": "روغن آرگان خالص",
+      "price": 420000,
+      "stock": "موجود",
+      "details": "آبرسان و نرم‌کننده مو، ساخت مراکش",
+      "category": "مراقبت از مو"
+    }
+  ],
+  "rules": "ارسال رایگان برای خریدهای بالای ۵۰۰ هزار تومان. زمان ارسال: ۴ تا ۴۸ ساعت کاری. پرداخت در محل امکان‌پذیر است."
+}

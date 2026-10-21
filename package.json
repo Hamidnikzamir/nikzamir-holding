@@ -1,0 +1,17 @@
+﻿{
+  "private": true,
+  "name": "nikzamir-holding",
+  "version": "0.1.0",
+  "description": "Monorepo for all Cloudflare Workers owned by the holding",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

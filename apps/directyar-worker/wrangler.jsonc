@@ -1,0 +1,19 @@
+{
+	"name": "directyar-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2024-09-06",
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "BOT_KV",
+			"id": "098fc3b1ffa8497487320afde0f4f993"
+		},
+		{
+			"binding": "USERS_DB",
+			"id": "4301a6ec1aad4d75b05d282c38126ca6",
+			"remote": true
+		}
+	]
+}

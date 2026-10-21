@@ -1,0 +1,15 @@
+### ذخیره‌سازی اطلاعات کاربر تستی
+PUT https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/storage/kv/namespaces/YOUR_NAMESPACE_ID/values/user:test123:config
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+
+{
+  "business_name": "فروشگاه تست",
+  "admin_id": "987654321",
+  "tone": "صمیمی",
+  "platform": "telegram"
+}
+
+### خواندن اطلاعات کاربر تستی
+GET https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/storage/kv/namespaces/YOUR_NAMESPACE_ID/values/user:test123:config
+Authorization: Bearer YOUR_API_TOKEN

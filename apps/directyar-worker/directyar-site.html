@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>دایرکت‌یار — دستیار هوشمند فروش در اینستاگرام، تلگرام و سایت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1B1330;
+    --bg-soft: #241A3D;
+    --panel: #2A1E47;
+    --gold: #D4A64A;
+    --gold-soft: #E8C87A;
+    --cream: #F3EFE6;
+    --cream-dim: #BFB8D4;
+    --plum-line: #3C2E5E;
+    --burgundy: #7A2E3B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Vazirmatn', sans-serif;
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,19,48,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--plum-line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .brand{font-weight:800; font-size:20px; letter-spacing:.2px;}
+  .brand span{color:var(--gold);}
+  .nav-links{display:flex; gap:32px; font-size:15px; color:var(--cream-dim);}
+  .nav-links a:hover{color:var(--gold-soft);}
+  .nav-cta{
+    background:var(--gold); color:#231536; padding:10px 22px; border-radius:8px;
+    font-weight:700; font-size:14.5px; text-decoration:none;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; padding:96px 0 60px;}
+  #hero-canvas{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
+    mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
+  }
+  .hero .wrap{position:relative; z-index:1; text-align:center;}
+  .hero h1{
+    font-size:clamp(34px, 5.4vw, 60px);
+    font-weight:800;
+    max-width:820px; margin:0 auto 22px;
+    letter-spacing:-.5px;
+  }
+  .hero p.lead{
+    color:var(--cream-dim); font-size:18px; max-width:560px; margin:0 auto 36px;
+  }
+  .hero-ctas{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold); color:#231536; padding:14px 30px; border-radius:10px;
+    font-weight:700; text-decoration:none; font-size:15.5px;
+    box-shadow:0 12px 30px -10px rgba(212,166,74,.55);
+  }
+  .btn-ghost{
+    border:1px solid var(--plum-line); color:var(--cream); padding:14px 30px; border-radius:10px;
+    text-decoration:none; font-size:15.5px;
+  }
+  .hero-meta{
+    margin-top:64px; display:flex; justify-content:center; gap:56px; flex-wrap:wrap;
+    color:var(--cream-dim); font-size:14px;
+  }
+  .hero-meta b{display:block; color:var(--gold-soft); font-size:26px; font-weight:800; margin-bottom:2px;}
+
+  /* ---------- channels ---------- */
+  .section{padding:88px 0;}
+  .section-head{max-width:640px; margin:0 auto 52px; text-align:center;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); font-weight:800; margin:0 0 14px;}
+  .section-head p{color:var(--cream-dim); font-size:16px; margin:0;}
+
+  .channels{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .channel-card{
+    background:var(--panel); border:1px solid var(--plum-line); border-radius:16px;
+    padding:30px 26px; text-align:right;
+  }
+  .channel-card .icon{
+    width:44px; height:44px; border-radius:11px; background:var(--bg-soft);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    color:var(--gold-soft); font-size:20px;
+  }
+  .channel-card h3{margin:0 0 8px; font-size:18px; font-weight:700;}
+  .channel-card p{margin:0; color:var(--cream-dim); font-size:14.5px;}
+
+  /* ---------- demo chat ---------- */
+  .demo{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .demo-copy h2{font-size:clamp(24px,3vw,32px); font-weight:800; margin:0 0 18px;}
+  .demo-copy p{color:var(--cream-dim); font-size:16px; margin:0 0 22px;}
+  .demo-copy ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .demo-copy li{display:flex; gap:12px; align-items:flex-start; font-size:15px;}
+  .demo-copy li::before{
+    content:"◆"; color:var(--gold); font-size:11px; margin-top:6px; flex-shrink:0;
+  }
+  .phone{
+    background:var(--panel); border:1px solid var(--plum-line); border-radius:22px;
+    padding:20px; max-width:360px; margin-inline-start:auto;
+  }
+  .bubble{border-radius:14px; padding:12px 16px; font-size:14.5px; margin-bottom:12px; max-width:85%;}
+  .bubble.user{background:var(--bg-soft); margin-inline-start:auto; color:var(--cream);}
+  .bubble.bot{background:var(--gold); color:#231536; font-weight:600;}
+  .bubble.tag{font-size:11px; opacity:.6; margin:-6px 0 10px; font-weight:600;}
+
+  /* ---------- pricing ---------- */
+  .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .plan{
+    background:var(--panel); border:1px solid var(--plum-line); border-radius:18px; padding:34px 28px;
+  }
+  .plan.featured{border-color:var(--gold); background:linear-gradient(180deg, #2E2150, var(--panel));}
+  .plan h3{font-size:17px; margin:0 0 4px; color:var(--gold-soft); font-weight:700;}
+  .plan .price{font-size:32px; font-weight:800; margin:6px 0 20px;}
+  .plan .price small{font-size:14px; font-weight:500; color:var(--cream-dim);}
+  .plan ul{list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14.5px; color:var(--cream-dim);}
+  .plan a{
+    display:block; text-align:center; padding:12px; border-radius:9px; text-decoration:none;
+    border:1px solid var(--plum-line); font-weight:700; font-size:14.5px;
+  }
+  .plan.featured a{background:var(--gold); color:#231536; border-color:var(--gold);}
+
+  footer{border-top:1px solid var(--plum-line); padding:40px 0; color:var(--cream-dim); font-size:14px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+
+  @media (max-width:860px){
+    .channels{grid-template-columns:1fr;}
+    .demo{grid-template-columns:1fr;}
+    .phone{margin-inline-start:0;}
+    .pricing{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    #hero-canvas{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">دایرکت<span>یار</span></div>
+    <div class="nav-links">
+      <a href="#channels">کانال‌ها</a>
+      <a href="#demo">دستیار هوشمند</a>
+      <a href="#pricing">قیمت‌گذاری</a>
+    </div>
+    <a class="nav-cta" href="#pricing">شروع رایگان</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="wrap">
+    <h1>یک متخصص واقعی برای کسب‌وکارتان، که هرگز نمی‌خوابد</h1>
+    <p class="lead">دایرکت‌یار اطلاعات کسب‌وکار شما را می‌خواند و در اینستاگرام، تلگرام و سایت، مثل یک مشاور واقعیِ همان حوزه پاسخ می‌دهد — نه یک ربات عمومی.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#pricing">اتصال کسب‌وکار من</a>
+      <a class="btn-ghost" href="#demo">دیدن نمونه مکالمه</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>۳</b>کانال یکپارچه</div>
+      <div><b>۲۴/۷</b>پاسخ‌گویی بدون وقفه</div>
+      <div><b>چندزبانه</b>بدون تنظیم دستی</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="channels">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>هر کانالی که دارید، یک مغز مشترک</h2>
+      <p>کانال‌های خودتان را انتخاب کنید؛ دایرکت‌یار فقط ماژول‌های همان کانال‌ها را فعال می‌کند.</p>
+    </div>
+    <div class="channels">
+      <div class="channel-card">
+        <div class="icon">◐</div>
+        <h3>اینستاگرام</h3>
+        <p>پاسخ خودکار به کامنت و دایرکت، تشخیص علاقه‌مندی از روی پیام و معرفی محصول مرتبط.</p>
+      </div>
+      <div class="channel-card">
+        <div class="icon">◑</div>
+        <h3>تلگرام</h3>
+        <p>مکالمه‌ی کامل سفارش‌گیری: انتخاب محصول، سبد خرید، آدرس و صدور فاکتور در همان چت.</p>
+      </div>
+      <div class="channel-card">
+        <div class="icon">◒</div>
+        <h3>وب‌سایت</h3>
+        <p>ویجت گفت‌وگوی زنده روی سایت شما، هم‌زمان با کاتالوگ فروشگاهی‌تان سینک می‌شود.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo" style="background:var(--bg-soft);">
+  <div class="wrap demo">
+    <div class="demo-copy">
+      <h2>مثل یک متخصص واقعی می‌پرسد، نه مثل یک فرم</h2>
+      <p>وقتی نیاز مشتری مبهم است، دایرکت‌یار سؤال هدفمند می‌پرسد — دقیقاً مثل فروشنده‌ی باتجربه‌ی شما.</p>
+      <ul>
+        <li>تشخیص نیت پیام (خرید، سؤال، مشاوره، پشتیبانی) در هر زبانی، بدون تعریف کلیدواژه</li>
+        <li>یادگیری مداوم از تصحیح‌های شما، بدون نیاز به کدنویسی مجدد</li>
+        <li>معرفی محصول فقط از کاتالوگ واقعی شما — بدون حدس یا محصول ساختگی</li>
+      </ul>
+    </div>
+    <div class="phone">
+      <div class="bubble tag">مشتری</div>
+      <div class="bubble user">یه چیزی برای موهای آسیب‌دیده می‌خوام</div>
+      <div class="bubble tag">دایرکت‌یار</div>
+      <div class="bubble bot">آسیب بیشتر در اثر حرارته یا دکلره؟ بر این اساس دقیق‌تر راهنمایی می‌کنم.</div>
+      <div class="bubble tag">مشتری</div>
+      <div class="bubble user">دکلره‌ست</div>
+      <div class="bubble tag">دایرکت‌یار</div>
+      <div class="bubble bot">برای موی دکلره‌شده، ماسک احیا + روغن آرگان ترکیب مناسبیه. می‌خوای به سبد اضافه کنم؟</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>قیمت‌گذاری شفاف</h2>
+      <p>متناسب با تعداد کانال و حجم مکالمه رشد کنید.</p>
+    </div>
+    <div class="pricing">
+      <div class="plan">
+        <h3>پایه</h3>
+        <div class="price">۰ <small>/ شروع رایگان</small></div>
+        <ul>
+          <li>یک کانال</li>
+          <li>پاسخ کلیدواژه‌ای ساده</li>
+          <li>تا ۲۰۰ مکالمه در ماه</li>
+        </ul>
+        <a href="#">شروع کنید</a>
+      </div>
+      <div class="plan featured">
+        <h3>هوشمند</h3>
+        <div class="price">۱٬۹۰۰٬۰۰۰ <small>تومان / ماه</small></div>
+        <ul>
+          <li>هر سه کانال</li>
+          <li>دستیار هوشمند با مشاوره‌ی تخصصی</li>
+          <li>یادگیری مداوم از فیدبک</li>
+          <li>پرداخت کارت و تتر</li>
+        </ul>
+        <a href="#">شروع کنید</a>
+      </div>
+      <div class="plan">
+        <h3>سازمانی</h3>
+        <div class="price">تماس بگیرید</div>
+        <ul>
+          <li>چند برند / چند فروشگاه</li>
+          <li>گزارش‌گیری اختصاصی</li>
+          <li>پشتیبانی اولویت‌دار</li>
+        </ul>
+        <a href="#">تماس با فروش</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© ۱۴۰۵ دایرکت‌یار</div>
+    <div>ساخته‌شده روی Cloudflare Workers</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var canvas = document.getElementById('hero-canvas');
+  if(!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true});
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 9);
+
+  function resize(){
+    var w = canvas.parentElement.offsetWidth;
+    var h = 560;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // مرکز: هسته‌ی هوش مصنوعی
+  var coreGeo = new THREE.IcosahedronGeometry(1.5, 1);
+  var coreMat = new THREE.MeshBasicMaterial({color: 0xD4A64A, wireframe: true, transparent:true, opacity:0.85});
+  var core = new THREE.Mesh(coreGeo, coreMat);
+  scene.add(core);
+
+  var innerGeo = new THREE.IcosahedronGeometry(0.85, 0);
+  var innerMat = new THREE.MeshBasicMaterial({color: 0xF3EFE6, wireframe: true, transparent:true, opacity:0.5});
+  var inner = new THREE.Mesh(innerGeo, innerMat);
+  scene.add(inner);
+
+  // سه گره‌ی مداری: نماد سه کانال که به هسته وصل می‌شوند
+  var orbitGroup = new THREE.Group();
+  scene.add(orbitGroup);
+  var nodes = [];
+  var nodeColors = [0xD4A64A, 0xE8C87A, 0x7A2E3B];
+  var radius = 3.6;
+  for (var i = 0; i < 3; i++){
+    var angle = (i / 3) * Math.PI * 2;
+    var nodeGeo = new THREE.SphereGeometry(0.14, 16, 16);
+    var nodeMat = new THREE.MeshBasicMaterial({color: nodeColors[i]});
+    var node = new THREE.Mesh(nodeGeo, nodeMat);
+    node.position.set(Math.cos(angle)*radius, Math.sin(angle*1.3)*1.1, Math.sin(angle)*radius);
+    orbitGroup.add(node);
+    nodes.push(node);
+
+    var lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), node.position]);
+    var lineMat = new THREE.LineBasicMaterial({color: nodeColors[i], transparent:true, opacity:0.35});
+    orbitGroup.add(new THREE.Line(lineGeo, lineMat));
+  }
+
+  // پس‌زمینه ذرات
+  var particleCount = 260;
+  var positions = new Float32Array(particleCount * 3);
+  for (var p = 0; p < particleCount; p++){
+    var r = 6 + Math.random()*5;
+    var theta = Math.random()*Math.PI*2;
+    var phi = Math.acos((Math.random()*2)-1);
+    positions[p*3] = r * Math.sin(phi) * Math.cos(theta);
+    positions[p*3+1] = r * Math.sin(phi) * Math.sin(theta);
+    positions[p*3+2] = r * Math.cos(phi);
+  }
+  var particleGeo = new THREE.BufferGeometry();
+  particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  var particleMat = new THREE.PointsMaterial({color: 0xBFB8D4, size: 0.035, transparent:true, opacity:0.5});
+  var particles = new THREE.Points(particleGeo, particleMat);
+  scene.add(particles);
+
+  var mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', function(e){
+    mouseX = (e.clientX / window.innerWidth - 0.5);
+    mouseY = (e.clientY / window.innerHeight - 0.5);
+  });
+
+  var clock = new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    var t = clock.getElapsedTime();
+    core.rotation.y = t * 0.15;
+    core.rotation.x = t * 0.08;
+    inner.rotation.y = -t * 0.22;
+    orbitGroup.rotation.y = t * 0.25;
+    particles.rotation.y = t * 0.02;
+
+    camera.position.x += (mouseX * 1.5 - camera.position.x) * 0.03;
+    camera.position.y += (-mouseY * 1.0 - camera.position.y) * 0.03;
+    camera.lookAt(0,0,0);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+
+</body>
+</html>
