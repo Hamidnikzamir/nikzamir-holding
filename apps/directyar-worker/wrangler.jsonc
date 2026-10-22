@@ -5,7 +5,9 @@
 	"ai": {
 		"binding": "AI"
 	},
-	"kv_namespaces": [
+	"vars": {
+		"SENTRY_DSN": "https://5072667bc21b5a60c9a1172ce6912a2a@o4512295679819776.ingest.de.sentry.io/4512297377202256"
+	},
 		{
 			"binding": "BOT_KV",
 			"id": "098fc3b1ffa8497487320afde0f4f993"

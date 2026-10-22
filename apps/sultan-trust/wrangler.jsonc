@@ -1,0 +1,8 @@
+{
+  "name": "sultan-trust",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-09-06",
+  "vars": {
+    "SENTRY_DSN": "https://32f3516020c9c672a2328bdb97999710@o4512295679819776.ingest.de.sentry.io/4512297386508368"
+  }
+}

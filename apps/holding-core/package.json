@@ -3,5 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/index.ts",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@sentry/cloudflare": "^8.30.0"
+  },
 }

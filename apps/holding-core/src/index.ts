@@ -1,4 +1,6 @@
-﻿/**
+﻿import * as Sentry from "@sentry/cloudflare";
+
+
  * holding-core
  * Shared utilities, type definitions, and helpers.
  */

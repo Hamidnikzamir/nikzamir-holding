@@ -1,6 +1,8 @@
 // src/index.ts
 // دایرکت یار - نسخه نهایی امن: ضد توهم + منطق شرطی فروش
 
+import * as Sentry from "@sentry/cloudflare";
+
 export interface Env {
   // Added WooCommerce integration variables
   WC_SITE_URL?: string;
@@ -142,6 +144,13 @@ export function isDirectYarPath(pathname: string): boolean {
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    if (env.SENTRY_DSN) {
+      Sentry.init({
+        dsn: env.SENTRY_DSN,
+        environment: "production",
+        release: "nikzamir-holding@1.0.0",
+      });
+    }
     const url = new URL(request.url);
     const pathname = url.pathname.replace(/\/+$/, "") || "/";
     if (request.method === "POST" && pathname === "/seed") return await handleSeed(request, env);

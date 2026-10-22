@@ -4,6 +4,9 @@
   "private": true,
   "main": "src/index.ts",
   "type": "module",
+  "devDependencies": {
+    "@sentry/cloudflare": "^8.30.0"
+  },
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
