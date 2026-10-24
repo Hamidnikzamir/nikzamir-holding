@@ -1,0 +1,19 @@
+{
+  "name": "jarvis-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JARVIS Dashboard - AI Orchestration Dashboard with Companion Server",
+  "scripts": {
+    "install:all": "npm install && cd companion && npm install",
+    "companion:start": "cd companion && npm start",
+    "companion:dev": "cd companion && npm run dev",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "workspaces": [
+    "companion"
+  ],
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

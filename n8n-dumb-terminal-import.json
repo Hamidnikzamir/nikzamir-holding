@@ -1,0 +1,103 @@
+{
+  "name": "Holding Orchestrator - Dumb Terminal",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "holding-orchestrator",
+        "responseMode": "onReceived",
+        "listenOn": "production"
+      },
+      "name": "Webhook – Receive Request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [200, 300],
+      "webhookId": "holding-orchestrator"
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://holding-orchestrator.rohanagent.workers.dev/execute",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={{ $json }}",
+        "headerParametersJson": "={\n  \"Content-Type\": \"application/json\"\n}"
+      },
+      "name": "HTTP Request – Forward to Holding Orchestrator",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 200,
+        "jsonResponse": "={{ $json }}"
+      },
+      "name": "Respond – Return Result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [800, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://holding-orchestrator.rohanagent.workers.dev/execute",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={{ {\n  tenant_id: $json.tenant_id,\n  request: $json.request,\n  context: $json.context\n} }}",
+        "headerParametersJson": "={\n  \"Content-Type\": \"application/json\"\n}"
+      },
+      "name": "HTTP Request – Retry on Failure",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 500]
+    }
+  ],
+  "connections": {
+    "Webhook – Receive Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request – Forward to Holding Orchestrator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request – Forward to Holding Orchestrator": {
+      "main": [
+        [
+          {
+            "node": "Respond – Return Result",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request – Retry on Failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request – Retry on Failure": {
+      "main": [
+        [
+          {
+            "node": "Respond – Return Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
