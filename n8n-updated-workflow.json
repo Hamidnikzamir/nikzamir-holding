@@ -1,0 +1,98 @@
+{
+  "name": "Multi‑Tenant WooCommerce Workflow",
+  "nodes": [
+    {
+      "parameters": {"httpMethod": "POST", "path": "multi-tenant-woocommerce", "responseMode": "onReceived", "listenOn": "production"},
+      "name": "Webhook – Receive Request",
+      "type": "n8n-nodes-base.webhook",
+      "webhookId": "multi-tenant-woocommerce",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "requestMethod": "GET",
+        "url": "{{ $json.tg_token }}",
+        "queryParametersUi": {}
+      },
+      "name": "HTTP Request – Get Tenant Credentials",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "store": true,
+        "product": "{{ $json.product }}",
+        "price": "{{ $json.price }}"
+      },
+      "name": "WooCommerce – Create Product",
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        800,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "{{ $json.tg_chat_id }}",
+        "text": "New product created: {{ $json.product }}"
+      },
+      "name": "Telegram – Notify Admin",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        300
+      ],
+      "credentials": {
+        "telegramApi": "AutoLocalTelegram"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook – Receive Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request – Get Tenant Credentials",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request – Get Tenant Credentials": {
+      "main": [
+        [
+          {
+            "node": "WooCommerce – Create Product",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WooCommerce – Create Product": {
+      "main": [
+        [
+          {
+            "node": "Telegram – Notify Admin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {}
+}

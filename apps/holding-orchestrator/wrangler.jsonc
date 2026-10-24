@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.jsonc",
+  "name": "holding-orchestrator",
+  "main": "src/index.js",
+  "account_id": "2a06db34b39e89c679ea1a88648f3d40",
+  "compatibility_date": "2024-10-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "ai": {
+    "binding": "AI"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "holding_brain_db",
+      "database_id": "f5579511-f695-4373-8a56-a82306edcd08"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "STATE_KV",
+      "id": "5cd18f2d62604ff287ebf83a6aad4e7b"
+    }
+  ],
+  "vectorize": [
+    {
+      "binding": "RADAR_INDEX",
+      "index_name": "radar_vector_index"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
