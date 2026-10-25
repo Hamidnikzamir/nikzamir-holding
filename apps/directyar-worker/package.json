@@ -9,6 +9,9 @@
     "test": "vitest",
     "cf-typegen": "wrangler types"
   },
+  "dependencies": {
+    "holding-core": "workspace:*"
+  },
   "devDependencies": {
     "@cloudflare/vitest-plugin": "^1.0.0",
     "@types/node": "^26.4.1",

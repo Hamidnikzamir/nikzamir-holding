@@ -1,21 +1,25 @@
 {
-	"name": "directyar-worker",
-	"main": "src/index.ts",
-	"compatibility_date": "2024-09-06",
-	"ai": {
-		"binding": "AI"
-	},
-	"vars": {
-		"SENTRY_DSN": "https://5072667bc21b5a60c9a1172ce6912a2a@o4512295679819776.ingest.de.sentry.io/4512297377202256"
-	},
-		{
-			"binding": "BOT_KV",
-			"id": "098fc3b1ffa8497487320afde0f4f993"
-		},
-		{
-			"binding": "USERS_DB",
-			"id": "4301a6ec1aad4d75b05d282c38126ca6",
-			"remote": true
-		}
-	]
+  "name": "directyar-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-09-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {
+    "SENTRY_DSN": "https://5072667bc21b5a60c9a1172ce6912a2a@o4512295679819776.ingest.de.sentry.io/4512297377202256"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "BOT_KV",
+      "id": "098fc3b1ffa8497487320afde0f4f993"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "USERS_DB",
+      "database_id": "4e7cc41f-6e30-4df0-8d22-e23be2b86cc2",
+      "remote": true
+    }
+  ]
 }

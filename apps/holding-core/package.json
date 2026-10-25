@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "holding-core",
   "version": "0.1.0",
   "private": true,
@@ -6,5 +6,5 @@
   "type": "module",
   "devDependencies": {
     "@sentry/cloudflare": "^8.30.0"
-  },
+  }
 }

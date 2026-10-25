@@ -1,7 +1,9 @@
 {
   "name": "holding-core",
   "main": "src/index.ts",
-  "compatibility_date": "2024-09-06",
+  "compatibility_date": "2024-09-06"
+  "d1": [{"binding": "HQ_DB", "database_name": "hq_database", "table_name": "hq_events"}]
+  "kv": [{"binding": "cfg", "preview_name": "hq_config", "production_name": "hq_config"}],
   "vars": {
     "SENTRY_DSN": "https://0e272ff8933881f3a9a5925c09bdb82f@o4512295679819776.ingest.de.sentry.io/4512297391030352"
   }
